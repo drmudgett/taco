@@ -116,7 +116,7 @@ resource "aws_security_group_rule" "jumpbox_windows" {
   from_port         = "${var.operating_system == "linux2" ? 22 : 3389}"
   to_port           = "${var.operating_system == "linux2" ? 22 : 3389}"
   protocol          = "tcp"
-  cidr_blocks       = [${var.allowed_sg_inbound_cidr_list}]
+  cidr_blocks       = "${var.allowed_sg_inbound_cidr_list}"
   security_group_id = "${aws_security_group.main.id}"
 }
 
